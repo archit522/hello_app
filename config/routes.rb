@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get 'employees/new'
 
   root  'static_pages#home'
   get'help' => 'static_pages#help'
   get 'signup' => 'employees#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources :employees
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

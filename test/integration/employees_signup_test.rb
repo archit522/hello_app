@@ -14,6 +14,7 @@ class EmployeesSignupTest < ActionDispatch::IntegrationTest
       post_via_redirect employees_path, employee: { name:  "Example Employee",
                                             email: "employee@example.com", password: "foobar", password_confirmation: "foobar" }
     end
+    assert is_logged_in?
     assert_template 'employees/show'
   end
 end

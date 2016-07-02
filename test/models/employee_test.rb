@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EmployeeTest < ActiveSupport::TestCase
   def setup
-    @employee = Employee.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+    @employee = Employee.new(name: "Example Employee", email: "employee@example.com", password: "foobar", password_confirmation: "foobar")
   end
   test "should be valid" do
     assert @employee.valid?
@@ -44,5 +44,8 @@ class EmployeeTest < ActiveSupport::TestCase
   test "password should have a minimum length" do
     @employee.password = @employee.password_confirmation = "a" * 5
     assert_not @employee.valid?
+  end
+  test "authenticated? should return false for a employee with nil digest" do
+    assert_not @employee.authenticated?('')
   end
 end
