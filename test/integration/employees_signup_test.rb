@@ -11,8 +11,7 @@ class EmployeesSignupTest < ActionDispatch::IntegrationTest
   test "valid signup information" do
     get signup_path
     assert_difference 'Employee.count', 1 do
-      post_via_redirect employees_path, employee: { name:  "Example Employee",
-                                            email: "employee@example.com", password: "foobar", password_confirmation: "foobar" }
+      post_via_redirect employees_path, employee: { name:  "Example Employee", email: "employee@example.com", password: "foobar", password_confirmation: "foobar" }
     end
     assert is_logged_in?
     assert_template 'employees/show'

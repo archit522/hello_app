@@ -1,0 +1,7 @@
+<li>
+<%= gravatar_for employee, size: 50 %>
+<%= link_to employee.name, employee %>
+<% if current_employee.admin? && !current_employee?(employee) %>
+| <%= link_to "delete", employee, method: :delete, data: { confirm: "You sure?" } %>
+<% end %>
+</li>

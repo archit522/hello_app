@@ -1,0 +1,9 @@
+<% provide(:title, 'All Employees') %>
+<h1>All Employees</h1>
+<%= will_paginate %>
+<ul class="employees">
+<% @employees.each do |employee| %>
+<%= render @employees %>
+<% end %>
+</ul>
+<%= will_paginate %>
