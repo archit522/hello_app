@@ -1,0 +1,23 @@
+michael:
+  name: Example Manager
+  email: example@railstutorial.org
+  password_digest: <%= Manager.digest('foobar') %>
+  admin: true
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= Manager.digest('foobar') %>
+lana:
+  name: Lana Kane
+  email: hands@example.gov
+  password_digest: <%= Manager.digest('password') %>
+mallory:
+  name: Mallory Archer
+  email: boss@example.gov
+  password_digest: <%= Manager.digest('password') %>
+<% 30.times do |n| %>
+manager_<%= n %>:
+  name: <%= "Manager #{n}" %>
+  email: <%= "manager-#{n}@example.com" %>
+  password_digest: <%= Manager.digest('password') %>
+<% end %>

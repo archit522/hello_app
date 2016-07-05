@@ -1,0 +1,12 @@
+<% provide(:title, @manager.name) %>
+<div class="row">
+<aside class="col-md-4">
+<section class="manager_info">
+<h1>
+<%= gravatar_for @manager %>
+<%= @manager.name %>
+<span class = "label label-danger">Manager</span>
+</h1>
+</section>
+</aside>
+</div>

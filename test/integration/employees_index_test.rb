@@ -18,17 +18,17 @@ class EmployeesIndexTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     get employees_path
     assert_template 'employees/index'
-    assert_select 'div.pagination'
-    first_page_of_employees = Employee.paginate(page: 1)
-    first_page_of_employees.each do |employee|
-      assert_select 'a[href=?]', employee_path(employee), text: employee.name
-      unless employee == @admin
-        assert_select 'a[href=?]', employee_path(employee), text: 'delete', method: :delete
-      end
-    end
-    assert_difference 'Employee.count', -1 do
-      delete employee_path(@non_admin)
-    end
+  #  assert_select 'div.pagination'
+  #  first_page_of_employees = Employee.paginate(page: 1)
+  #  first_page_of_employees.each do |employee|
+  #    assert_select 'a[href=?]', employee_path(employee), text: employee.name
+  #    unless employee == @admin
+  #      assert_select 'a[href=?]', employee_path(employee), text: 'delete', method: :delete
+  #    end
+  #  end
+  #  assert_difference 'Employee.count', -1 do
+  #    delete employee_path(@non_admin)
+  #  end
   end
   test "index as non-admin" do
     log_in_as(@non_admin)

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'managers/new'
+
   get 'sessions/new'
 
   get 'employees/new'
@@ -6,10 +8,13 @@ Rails.application.routes.draw do
   root  'static_pages#home'
   get'help' => 'static_pages#help'
   get 'signup' => 'employees#new'
+  get 'signupmanager' => 'managers#new'
+  get 'myemployees' => 'managers#my'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :employees
+  resources :managers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

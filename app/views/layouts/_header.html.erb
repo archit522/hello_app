@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-<%= link_to "sample app", root_path, id: "logo" %> <nav>
+<%= link_to "ERP", root_path, id: "logo" %> <nav>
 <ul class="nav navbar-nav navbar-right">
 <li><%= link_to "Home", root_path %></li>
 <li><%= link_to "Help", help_path %></li>
@@ -12,6 +12,22 @@
   <ul class="dropdown-menu">
   <li><%= link_to "Profile", current_employee %></li>
   <li><%= link_to "Edit Profile", edit_employee_path(current_employee) %></li>
+  <li class="divider"></li>
+  <li>
+  <%= link_to "Log out", logout_path, method: "delete" %> 
+  </li>
+  </ul> 
+  </li>
+  <% elsif logged_in_manager? %>
+  <li><%= link_to "My Employees", myemployees_path %></li>
+  <li><%= link_to "Managers", managers_path %></li>
+  <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  Account <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+  <li><%= link_to "Profile", current_manager %></li>
+  <li><%= link_to "Edit Profile", edit_manager_path(current_manager) %></li>
   <li class="divider"></li>
   <li>
   <%= link_to "Log out", logout_path, method: "delete" %> 

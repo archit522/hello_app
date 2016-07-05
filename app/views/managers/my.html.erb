@@ -1,0 +1,10 @@
+<% provide(:title, 'My Employees') %>
+<h1>Your Employees</h1>
+<ul class="employees">
+<% @employees.each do |employee| %>
+<li>
+<%= gravatar_for employee, size: 50 %>
+<%= link_to employee.name, employee %>
+</li>
+<% end %>
+</ul>

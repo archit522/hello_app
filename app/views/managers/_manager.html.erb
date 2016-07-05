@@ -1,0 +1,8 @@
+<li>
+  <%= gravatar_for manager, size: 50 %>
+  <%= link_to manager.name, manager %>
+  <% if current_manager.admin? && !current_manager?(manager) %>
+| <%= link_to "delete", manager, method: :delete,
+data: { confirm: "You sure?" } %>
+<% end %>
+</li>

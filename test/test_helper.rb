@@ -8,6 +8,9 @@ class ActiveSupport::TestCase
   def is_logged_in?
     !session[:employee_id].nil?
   end
+  def is_logged_in_manager?
+    !session[:manager_id].nil?
+  end
   def log_in_as(employee, options = {})
     password = options[:password] || 'foobar'
     remember_me = options[:remember_me] || '1'
@@ -17,6 +20,17 @@ class ActiveSupport::TestCase
       remember_me: remember_me }
     else
       session[:employee_id] = employee.id
+    end
+  end
+  def log_in_as_manager(manager, options = {})
+    password = options[:password] || 'foobar'
+    remember_me = options[:remember_me] || '1'
+    if integration_test?
+      post login_path, session: { email: manager.email,
+      password: password,
+      remember_me: remember_me, manager: 1 }
+    else
+      session[:manager_id] = manager.id
     end
   end
   private

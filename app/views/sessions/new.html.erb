@@ -4,6 +4,10 @@
 <%= form_for(:session, url: login_path) do |f| %> <%= f.label :email %>
 <%= f.email_field :email, class: 'form-control' %> <%= f.label :password %>
 <%= f.password_field :password, class: 'form-control' %>
+<%= f.label :manager, class: "checkbox inline" do %>
+<%= f.check_box :manager %>
+<span>I am manager</span>
+<% end %>
 <%= f.label :remember_me, class: "checkbox inline" do %>
 <%= f.check_box :remember_me %>
 <span>Remember me on this computer</span>

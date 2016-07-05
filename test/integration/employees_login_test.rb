@@ -6,7 +6,7 @@ class EmployeesLoginTest < ActionDispatch::IntegrationTest
   end
   test "login with valid information" do
     get login_path
-    post login_path, session: { email: @employee.email, password: 'foobar' }
+    post login_path, session: { email: @employee.email, password: 'foobar', manager: false }
     assert_redirected_to @employee
     follow_redirect!
     assert_template 'employees/show'
@@ -16,7 +16,7 @@ class EmployeesLoginTest < ActionDispatch::IntegrationTest
 end
   test "login with valid information followed by logout" do
     get login_path
-    post login_path, session: { email: @employee.email, password: 'foobar' }
+    post login_path, session: { email: @employee.email, password: 'foobar', manager: false }
     assert is_logged_in?
     assert_redirected_to @employee
     follow_redirect!
