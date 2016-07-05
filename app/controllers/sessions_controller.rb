@@ -17,9 +17,16 @@ class SessionsController < ApplicationController
     else
       employee = Employee.find_by(email: params[:session][:email].downcase)
       if employee && employee.authenticate(params[:session][:password])
-        log_in employee
-        params[:session][:remember_me] == '1' ? remember(employee) : forget(employee)
-        redirect_back_or employee
+        if employee.activated?
+          log_in employee
+          params[:session][:remember_me] == '1' ? remember(employee) : forget(employee)
+          redirect_back_or employee
+        else
+          message = "Account not activated. "
+          message += "Check your email for the activation link."
+          flash[:warning] = message
+          redirect_to root_url
+        end
          # Log the employee in and redirect to the employee's show page.
       else
         flash.now[:danger] = "Invalid email/password combination"

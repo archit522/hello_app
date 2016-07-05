@@ -46,6 +46,6 @@ class EmployeeTest < ActiveSupport::TestCase
     assert_not @employee.valid?
   end
   test "authenticated? should return false for a employee with nil digest" do
-    assert_not @employee.authenticated?('')
+    assert_not @employee.authenticated?(:remember, '')
   end
 end

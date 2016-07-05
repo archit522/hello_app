@@ -4,21 +4,31 @@ michael:
   email: "example@railstutorial.org"
   password_digest: <%= Employee.digest('foobar') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 archer:
   name: "Hello Employee"
   email: "hello@emp.com"
   password_digest: <%= Employee.digest('foobar') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 lana:
   name: Lana Kane
   email: hands@example.gov
   password_digest: <%= Employee.digest('foobar') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 mallory:
   name: Mallory Archer
   email: boss@example.gov
   password_digest: <%= Employee.digest('foobar') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% 30.times do |n| %>
 employee_<%= n %>:
   name: <%= "Employee #{n}" %>
   email: <%= "employee-#{n}@example.com" %>
   password_digest: <%= Employee.digest('foobar') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>
