@@ -10,7 +10,9 @@ end
 # Preview this email at
 # http://localhost:3000/rails/mailers/employeee_mailer/password_reset
 def password_reset
-EmployeeMailer.password_reset
+employee = Employee.first
+employee.reset_token = Employee.new_token
+EmployeeMailer.password_reset(employee)
 end
 
 end
